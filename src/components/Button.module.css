@@ -1,0 +1,10 @@
+/* Button.module.css */
+.button {
+    background-color: #FF7A1C;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 47px;
+    cursor: pointer;
+    font-size: 16px;
+  }
