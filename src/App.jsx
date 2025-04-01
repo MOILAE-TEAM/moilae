@@ -1,13 +1,14 @@
 // import { useState } from 'react'
 
 import './App.css'
-import Button from './components/Button'
+
+import Header from './layouts/Header.jsx'
 function App() {
 
 
   return (
     <>
-        <Button>로그인</Button>
+        <Header/>
        
     </>
   )

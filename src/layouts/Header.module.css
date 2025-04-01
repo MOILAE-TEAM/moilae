@@ -1,0 +1,67 @@
+*{
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1.4375rem;
+  }
+  
+  .titleWrapper {
+    display: flex;
+    gap: 10px; 
+    align-items: center;
+  }
+  
+  .title {
+    font-weight: 700;
+    font-size: 2rem; 
+    color: #FF7A1C;
+  }
+  
+  .des {
+    font-size: 1rem; 
+    color: #959090;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+  .searchWrapper {
+    position: relative;
+    width: 31rem;
+  }
+  
+  .searchWrapper::before {
+    content: '';
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2rem;       
+    height: 2rem;
+    background-image: url('../assets/Search.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none;
+  }
+  
+  .searchInput {
+    width: 31rem; 
+    height: 2.9375rem; 
+    background-color: #f6f6f6;
+    border: 1px solid #e2e2e2;
+    border-radius: 0.5625rem;
+  }
+  
+  .loginWrapper {
+    display: flex;
+    gap: 0.3125rem; 
+  }
+  
+  /* .login {
+    
+  }
+  
+  .signIn {
+    
+  }
+   */
