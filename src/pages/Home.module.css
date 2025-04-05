@@ -1,0 +1,28 @@
+
+section{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+ul{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 34px;
+}
+
+.title{
+    color: #A6A6A6;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 31px;
+    font-weight: bold;
+}
+
+.list{
+    font-family: 'Noto Sans KR', sans-serif;
+    display: inline;
+    flex-wrap: wrap;
+}
+
+/* ul{
+    display: flex
+} */

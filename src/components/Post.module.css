@@ -1,0 +1,61 @@
+*{
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+
+li{
+    list-style: none;
+    font-family: 'Noto Sans KR', sans-serif;
+    /* background-color: tomato; */
+    display: inline-flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 38px 21px;
+    border: 1px solid #e1e1e1;
+    border-radius: 3px;
+    font-size: 16px;
+    width: 40%;
+    /* margin: 17px; */
+}
+
+h3{
+    font-weight: bold;
+    font-size: 20px;
+
+}
+
+.titleWrapper{
+    display: flex;
+    gap: 5px;
+    align-items: center
+}
+.popularIcon{
+    color: #E2A753;
+    font-weight: bold;
+}
+
+.tag{
+    background-color: #5F5F5F;
+    display: inline;
+    width:fit-content;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #fff;
+    padding: 3px 5px;
+}
+
+@keyframes fireBounce {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.15);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .fireIcon {
+    animation: fireBounce 1s ease-in-out infinite;
+  }
