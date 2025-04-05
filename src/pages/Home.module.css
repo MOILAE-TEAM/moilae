@@ -3,6 +3,7 @@ section{
     display: flex;
     flex-direction: column;
     gap: 40px;
+    margin-left: 100px;
 }
 ul{
     display: flex;
@@ -10,6 +11,11 @@ ul{
     gap: 34px;
 }
 
+
+.wrapper{
+    display: flex;
+    padding: 50px;
+}
 .title{
     color: #A6A6A6;
     font-family: 'Noto Sans KR', sans-serif;
