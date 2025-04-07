@@ -5,7 +5,7 @@ section{
     gap: 40px;
     margin-left: 100px;
 }
-ul{
+.listWrapper{
     display: flex;
     flex-wrap: wrap;
     gap: 34px;
@@ -24,11 +24,41 @@ ul{
 }
 
 .list{
+    cursor: pointer;
+    list-style: none;
     font-family: 'Noto Sans KR', sans-serif;
-    display: inline;
-    flex-wrap: wrap;
+    /* background-color: tomato; */
+    display: inline-flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 38px 21px;
+    border: 1px solid #e1e1e1;
+    border-radius: 3px;
+    font-size: 16px;
+    width: 40%;
+    /* margin: 17px; */
 }
 
+.list >div{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.navWrapper{
+    display: flex;
+    flex-direction: row;
+    gap: 60%;
+}
+
+.navWrapper > ul {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    font-weight: b;
+    cursor: pointer;
+}
 /* ul{
     display: flex
 } */
+
+
