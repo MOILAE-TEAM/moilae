@@ -4,6 +4,7 @@ import './App.css'
 
 import Header from './layouts/Header.jsx'
 import Home from './pages/Home';
+import Footer from './layouts/Footer.jsx';
 function App() {
 
 
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
       </Routes>
+      <Footer/>
     </Router>
   );
   
