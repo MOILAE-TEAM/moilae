@@ -4,6 +4,7 @@ import './App.css'
 
 import Header from './layouts/Header.jsx'
 import Home from './pages/Home';
+import CreatePostPage from './pages/CreatePostPage.jsx';
 import Footer from './layouts/Footer.jsx';
 function App() {
 
@@ -12,7 +13,8 @@ function App() {
     <Router>
       <Header /> 
       <Routes>
-        <Route path="/" element={<Home />} />
+        {/* <Route path="/" element={<Home />} /> */}
+        <Route path="/" element={<CreatePostPage />} />
       </Routes>
       <Footer/>
     </Router>
