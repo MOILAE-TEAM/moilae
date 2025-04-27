@@ -11,31 +11,37 @@ const CreatePostPage = () => {
 
   return (
     <>
-      <Banner />
-      <section>
-        <p>같이하면 성공확률이 2배</p>
-        <h2>목표를 혼자 품지말고 사람들을 모아보세요</h2>
+      {/* <Banner /> */}
+      <section className={styles.postSectionWrapper}>
+        <p className={styles.des1}>같이하면 성공확률이 2배</p>
+        <h2 className={styles.des2}>목표를 혼자 품지말고 사람들을 모아보세요</h2>
 
+        {/* <div className={styles.flexWrapper}>
         <div>
-          <div>스터디 이름</div>
+          <div className={styles.inputText}>스터디 이름</div>
           <input type='text' value={title} onChange={(e) => setField('title', e.target.value)} />
-
-          <div>카테고리</div>
+          </div>
+          <div>
+         
+        </div></div> */}
+        <div className={styles.inputAreaWrapper}>
+        <div className={styles.flexWrapper}>
+          <div>
+          <div className={styles.inputText}>스터디 한 줄 소개(제목)</div>
+          <input type='text' /></div>
+          <div>
+          <div className={styles.inputText}>카테고리</div>
           <input type='text' value={category} onChange={(e) => setField('category', e.target.value)} />
-        </div>
-
-        <div>스터디 한 줄 소개(제목)</div>
-        <input type='text' />
-
-        <div>세부 설명</div>
-        <input type='text' />
-
-        <div>스터디 형태 (하나 선택)</div>
-        <div>
+        </div></div>
+        <div className={`${styles.inputText}`}>세부 설명</div>
+        <input className={styles.detailDescription} type='text' />
+      <div >
+        <div className={`${styles.inputText} ${styles.radioWrpper}`}>스터디 형태 (하나 선택)</div>
+        
           {studyTypes.map((item) => (
             <label key={item}>
               <input
-                type="radio"
+                type="checkbox"
                 name="studyType"
                 value={item}
                 checked={type === item}
@@ -46,13 +52,13 @@ const CreatePostPage = () => {
           ))}
         </div>
 
-        <div>활용하는 플랫폼을 모두 선택하세요</div>
-        <p>1개 이상 선택 필수</p>
-        <div>
+        <div className={`${styles.inputText} ${styles.radioWrpper}`}>활용하는 플랫폼을 모두 선택하세요</div>
+        <p className={styles.inputReq}>1개 이상 선택 필수</p>
+        <div className={styles.radioWrpper}>
           {platforms.map((item) => (
             <label key={item}>
               <input
-                type="radio"
+                type="checkbox"
                 name="platform"
                 value={item}
                 checked={platform === item}
@@ -61,7 +67,7 @@ const CreatePostPage = () => {
               {item}
             </label>
           ))}
-        </div>
+        </div></div>
       </section>
     </>
   );
