@@ -9,7 +9,6 @@ article{
 p{
     font-size: 24px;
     font-weight: bold;
-
 }
 
 button{
@@ -19,12 +18,23 @@ button{
     border-radius: 47px;
     padding: 12px 42px;
     border: none;
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
 }
 
+button:hover {
+    transform: scale(1.05);
+}
 
 .buttonWrapper{
     text-align: center;
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+
+.question {
+    font-size: 24px;
+    font-weight: 500;
+    color: rgb(58, 58, 58);
 }

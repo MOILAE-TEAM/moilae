@@ -7,8 +7,10 @@ const Banner = ({ children, onClick }) => {
      
         <img  className={styles.fireIcon} src={ad} alt="광고배너" />
         <div className={styles.buttonWrapper}>
-            <p>내가 찾는 스터디가 없다면?</p>
-            <button>스터디 만들기</button>
+            <p className={styles.question}>내가 찾는 스터디가 없다면?</p>
+            <a href="https://walla.my/survey/ikykdUun43CzkEyIQ7gt" target="_blank" rel="noopener noreferrer">
+              <button>스터디 만들기</button>
+            </a>
         </div>
     </article>
   );

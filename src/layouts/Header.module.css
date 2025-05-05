@@ -65,3 +65,41 @@ header {
     
   }
    */
+
+/* 태블릿 (768px 이하) */
+@media screen and (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .searchWrapper {
+    width: 100%;
+  }
+
+  .searchInput {
+    width: 100%;
+  }
+
+  .titleWrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* 모바일 (480px 이하) */
+@media screen and (max-width: 480px) {
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .des {
+    font-size: 0.875rem;
+  }
+
+  .loginWrapper {
+    width: 100%;
+    justify-content: center;
+  }
+}

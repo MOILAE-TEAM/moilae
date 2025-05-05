@@ -14,10 +14,10 @@ function Header() {
             <div className={styles.searchWrapper}>
                 <input className={styles.searchInput}></input>
             </div>
-            <div className={styles.loginWrapper}>
+            {/* <div className={styles.loginWrapper}>
                 <Button className={styles.login}>로그인</Button>
                 <Button className={styles.signIn}>회원가입</Button>
-            </div>
+            </div> */}
         </header>
     )
 }
