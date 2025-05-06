@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import Post from '../components/Post';
 import styles from './Home.module.css';
 import Banner from '../components/Banner';
@@ -54,6 +54,11 @@ const Home = () => {
     
     return { currentItems, totalPages };
   }, [currentPage, itemsPerPage, filteredData]);
+
+  // 카테고리가 변경될 때 페이지를 1로 리셋
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedCategory]);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);

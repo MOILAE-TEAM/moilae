@@ -48,6 +48,10 @@ const PostDetailPage = () => {
               <p>{post.currentMembers} / {post.maxMembers}명</p>
             </div>
             <div className={styles.detailItem}>
+              <h3>사용 플랫폼</h3>
+              <p>{post.platform || ''}</p>
+            </div>
+            <div className={styles.detailItem}>
               <h3>시작일</h3>
               <p>{post.startDate}</p>
             </div>

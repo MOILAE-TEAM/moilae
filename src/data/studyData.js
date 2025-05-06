@@ -30,7 +30,7 @@ export const studyData = [
     currentMembers: 3,
     startDate: "2024-03-22",
     endDate: "2024-05-22",
-    location: "카카오톡",
+    location: "온라인",
     category: "동기부여"
   },
   {
