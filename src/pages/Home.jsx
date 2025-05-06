@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import Post from '../components/Post';
 import styles from './Home.module.css';
 import Banner from '../components/Banner';
@@ -10,26 +10,43 @@ const Home = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 12;
   
+  // 선택된 카테고리가 있으면 해당 카테고리의 데이터만 필터링
+  const filteredData = useMemo(() => {
+    const filtered = selectedCategory
+      ? studyData.filter(item => item.category === selectedCategory)
+      : studyData;
+    console.log('Filtered Data Length:', filtered.length);
+    return filtered;
+  }, [selectedCategory]);
+
   // useMemo를 사용하여 페이지네이션 계산을 최적화
   const { currentItems, totalPages } = useMemo(() => {
-    const totalPages = Math.ceil(studyData.length / itemsPerPage);
+    const totalPages = Math.ceil(filteredData.length / itemsPerPage);
     const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = Math.min(startIndex + itemsPerPage, studyData.length);
-    const currentItems = studyData.slice(startIndex, endIndex);
+    const endIndex = Math.min(startIndex + itemsPerPage, filteredData.length);
+    const currentItems = filteredData.slice(startIndex, endIndex);
+    
+    console.log('Total Pages:', totalPages);
+    console.log('Current Page:', currentPage);
+    console.log('Current Items Length:', currentItems.length);
     
     return { currentItems, totalPages };
-  }, [currentPage, itemsPerPage]);
+  }, [currentPage, itemsPerPage, filteredData]);
 
-  // 선택된 카테고리가 있으면 해당 카테고리의 데이터만 필터링
-  const filteredData = selectedCategory
-    ? studyData.filter(item => item.category === selectedCategory)
-    : studyData;
+  // 카테고리가 변경될 때 첫 페이지로 이동
+  useEffect(() => {
+    console.log('Category Changed:', selectedCategory);
+    setCurrentPage(1);
+  }, [selectedCategory]);
 
   const handlePageChange = (pageNumber) => {
+    console.log('Page Changed to:', pageNumber);
     setCurrentPage(pageNumber);
   };
 
   const renderPagination = () => {
+    console.log('Rendering Pagination, Total Pages:', totalPages);
+    
     const pageNumbers = [];
     const maxVisiblePages = 3;
     
@@ -98,7 +115,7 @@ const Home = () => {
           </ul>
         </div>
         <ul className={styles.listWrapper}>
-          {filteredData.map((study, index) => (
+          {currentItems.map((study, index) => (
             <li className={styles.list} key={`${study.id}-${index}`}>
               <Post 
                 title={study.title}

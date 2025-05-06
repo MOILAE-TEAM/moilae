@@ -7,34 +7,46 @@ const CategoryNav = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { setSelectedCategory } = useCategory();
   
-  const categories = ['전체보기', ...new Set(studyData.map(item => item.category))];
+  const categories = [...new Set(studyData.map(item => item.category))];
 
   const handleCategoryClick = (category) => {
-    setSelectedCategory(category === '전체보기' ? null : category);
+    setSelectedCategory(category);
     setIsOpen(false);
+  };
+
+  const handleAllClick = () => {
+    setSelectedCategory(null);
   };
 
   return (
     <nav className={styles.nav}>
-      <div 
-        className={styles.trigger}
-        onMouseEnter={() => setIsOpen(true)}
-        onMouseLeave={() => setIsOpen(false)}
-      >
-        카테고리
-        {isOpen && (
-          <div className={styles.dropdown}>
-            {categories.map((category) => (
-              <div 
-                key={category} 
-                className={styles.item}
-                onClick={() => handleCategoryClick(category)}
-              >
-                {category}
-              </div>
-            ))}
-          </div>
-        )}
+      <div className={styles.navButtons}>
+        <div 
+          className={styles.trigger}
+          onClick={handleAllClick}
+        >
+          전체보기
+        </div>
+        <div 
+          className={styles.trigger}
+          onMouseEnter={() => setIsOpen(true)}
+          onMouseLeave={() => setIsOpen(false)}
+        >
+          카테고리
+          {isOpen && (
+            <div className={styles.dropdown}>
+              {categories.map((category) => (
+                <div 
+                  key={category} 
+                  className={styles.item}
+                  onClick={() => handleCategoryClick(category)}
+                >
+                  {category}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </nav>
   );

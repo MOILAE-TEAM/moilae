@@ -5,6 +5,26 @@
   border-top: 1px solid #e9ecef;
 }
 
+.navButtons {
+  display: flex;
+  gap: 1rem;
+  margin-left: 25%;
+}
+
+.allButton {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: 500;
+  color: #495057;
+  background: none;
+  border: none;
+  transition: color 0.2s;
+}
+
+.allButton:hover {
+  color: #228be6;
+}
+
 .trigger {
   position: relative;
   display: inline-block;
@@ -12,7 +32,7 @@
   cursor: pointer;
   font-weight: 500;
   color: #495057;
-  margin-left: 20%;
+  /* margin-left: 20%; */
 }
 
 .dropdown {
