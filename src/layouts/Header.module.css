@@ -83,7 +83,7 @@ header {
   }
 
   .titleWrapper {
-    flex-direction: column;
+    /* flex-direction: column; */
     text-align: center;
   }
 }
