@@ -32,6 +32,7 @@ const PostDetailPage = () => {
             ← 돌아가기
           </button>
           <h1>{post.title}</h1>
+          <p className={styles.description}>{post.semiTitle}</p>
           <div className={styles.metaInfo}>
             <span className={styles.category}>{post.category}</span>
             {post.isPopular && <span className={styles.popular}>인기스터디</span>}
@@ -41,6 +42,7 @@ const PostDetailPage = () => {
         
         <div className={styles.content}>
           <p className={styles.description}>{post.description}</p>
+          
           
           <div className={styles.details}>
             <div className={styles.detailItem}>

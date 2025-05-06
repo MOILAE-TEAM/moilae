@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Post.module.css';
 import fireIcon from '../assets/fireicon.svg';
 
-const Post = ({ id, title, description, tag, isPopular, isClosed }) => {
+const Post = ({ id, title, semiTitle, description, tag, isPopular, isClosed }) => {
   return (
     <div className={styles.card}>
       <div className={styles.titleWrapper}>
@@ -14,7 +14,7 @@ const Post = ({ id, title, description, tag, isPopular, isClosed }) => {
           </>
         )}
       </div>
-      <p className={styles.des}>{description}</p>
+      <p className={styles.des}>{semiTitle || ''}</p>
       <div className={styles.tagWrapper}>
         <div className={styles.tag}>{tag}</div>
         {isClosed && <div className={styles.tag}>마감</div>}

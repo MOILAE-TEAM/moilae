@@ -172,6 +172,7 @@ const Home = () => {
                 tag={study.category}
                 isPopular={study.isPopular}
                 isClosed={study.isClosed}
+                semiTitle = {study.semiTitle}
               />
             </li>
           ))}
