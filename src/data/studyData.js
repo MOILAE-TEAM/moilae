@@ -130,7 +130,8 @@ export const studyData = [
     startDate: "2024-03-22",
     endDate: "2024-05-22",
     location: "온라인",
-    category: "자기계발"
+    category: "자기계발",
+    isPopular: true,
   },
   {
     id: 13,
@@ -174,7 +175,8 @@ export const studyData = [
     startDate: "2024-03-22",
     endDate: "2024-05-22",
     location: "온라인",
-    category: "자기계발"
+    category: "자기계발",
+    isPopular: true,
   },
   {
     id: 17,

@@ -3,8 +3,10 @@ import Post from '../components/Post';
 import styles from './Home.module.css';
 import Banner from '../components/Banner';
 import { studyData } from '../data/studyData';
+import { useCategory } from '../context/CategoryContext';
 
 const Home = () => {
+  const { selectedCategory } = useCategory();
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 12;
   
@@ -17,6 +19,11 @@ const Home = () => {
     
     return { currentItems, totalPages };
   }, [currentPage, itemsPerPage]);
+
+  // 선택된 카테고리가 있으면 해당 카테고리의 데이터만 필터링
+  const filteredData = selectedCategory
+    ? studyData.filter(item => item.category === selectedCategory)
+    : studyData;
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -81,7 +88,9 @@ const Home = () => {
       <Banner />
       <section>
         <div className={styles.navWrapper}>
-          <h2 className={styles.title}>모든 스터디 모아보기</h2>
+          <h2 className={styles.title}>
+            {selectedCategory ? `${selectedCategory} 모일 모아보기` : '모든 스터디 모아보기'}
+          </h2>
           <ul>
             <li>최신순</li>
             <li>인기순</li>
@@ -89,7 +98,7 @@ const Home = () => {
           </ul>
         </div>
         <ul className={styles.listWrapper}>
-          {currentItems.map((study, index) => (
+          {filteredData.map((study, index) => (
             <li className={styles.list} key={`${study.id}-${index}`}>
               <Post 
                 title={study.title}

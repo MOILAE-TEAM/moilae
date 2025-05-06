@@ -21,7 +21,7 @@ const Banner = ({ onClick }) => {
 
   return (
      <article>
-        <a href="https://www.naver.com" target="_blank" rel="noopener noreferrer" onClick={onClick}>
+        <a href="https://band-trapezoid-89a.notion.site/1-1ebd2ed346f180f592d0ef8938cddc8e" target="_blank" rel="noopener noreferrer" onClick={onClick}>
           <img className={styles.fireIcon} src={isMobile ? adMobile : ad} alt="광고배너" />
         </a>
         <div className={styles.buttonWrapper}>
