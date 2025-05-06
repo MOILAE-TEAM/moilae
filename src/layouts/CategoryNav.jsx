@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { studyData } from '../data/studyData';
 import { useCategory } from '../context/CategoryContext';
+import useSearchStore from '../store/useSearchStore';
 import styles from './CategoryNav.module.css';
 
 const CategoryNav = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { setSelectedCategory } = useCategory();
+  const { resetSearch } = useSearchStore();
   
   const categories = [...new Set(studyData.map(item => item.category))];
 
@@ -16,6 +18,7 @@ const CategoryNav = () => {
 
   const handleAllClick = () => {
     setSelectedCategory(null);
+    resetSearch();
   };
 
   return (

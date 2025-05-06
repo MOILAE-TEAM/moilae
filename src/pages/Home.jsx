@@ -1,23 +1,49 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import Post from '../components/Post';
 import styles from './Home.module.css';
 import Banner from '../components/Banner';
-import { studyData } from '../data/studyData';
 import { useCategory } from '../context/CategoryContext';
+import useSortStore from '../store/sortStore';
+import useSearchStore from '../store/useSearchStore';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const { selectedCategory } = useCategory();
   const [currentPage, setCurrentPage] = useState(1);
+  const { sortType, setSortType } = useSortStore();
+  const { searchResults, searchQuery } = useSearchStore();
   const itemsPerPage = 12;
+  const navigate = useNavigate();
   
-  // 선택된 카테고리가 있으면 해당 카테고리의 데이터만 필터링
+  // 선택된 카테고리가 있으면 해당 카테고리의 데이터만 필터링하고 정렬
   const filteredData = useMemo(() => {
-    const filtered = selectedCategory
-      ? studyData.filter(item => item.category === selectedCategory)
-      : studyData;
-    console.log('Filtered Data Length:', filtered.length);
+    let filtered = selectedCategory
+      ? searchResults.filter(item => item.category === selectedCategory)
+      : searchResults;
+
+    // 정렬 로직
+    switch (sortType) {
+      case 'popular':
+        filtered = [...filtered].sort((a, b) => {
+          // 먼저 마감 상태로 정렬 (마감된 게시물이 뒤로)
+          if (a.isClosed !== b.isClosed) {
+            return a.isClosed ? 1 : -1;
+          }
+          // 그 다음 인기 여부로 정렬
+          return (b.isPopular ? 1 : 0) - (a.isPopular ? 1 : 0);
+        });
+        break;
+      case 'open':
+        filtered = [...filtered].sort((a, b) => (a.isClosed ? 1 : 0) - (b.isClosed ? 1 : 0));
+        break;
+      case 'latest':
+      default:
+        filtered = [...filtered].sort((a, b) => new Date(b.startDate) - new Date(a.startDate));
+        break;
+    }
+
     return filtered;
-  }, [selectedCategory]);
+  }, [selectedCategory, sortType, searchResults]);
 
   // useMemo를 사용하여 페이지네이션 계산을 최적화
   const { currentItems, totalPages } = useMemo(() => {
@@ -26,27 +52,14 @@ const Home = () => {
     const endIndex = Math.min(startIndex + itemsPerPage, filteredData.length);
     const currentItems = filteredData.slice(startIndex, endIndex);
     
-    console.log('Total Pages:', totalPages);
-    console.log('Current Page:', currentPage);
-    console.log('Current Items Length:', currentItems.length);
-    
     return { currentItems, totalPages };
   }, [currentPage, itemsPerPage, filteredData]);
 
-  // 카테고리가 변경될 때 첫 페이지로 이동
-  useEffect(() => {
-    console.log('Category Changed:', selectedCategory);
-    setCurrentPage(1);
-  }, [selectedCategory]);
-
   const handlePageChange = (pageNumber) => {
-    console.log('Page Changed to:', pageNumber);
     setCurrentPage(pageNumber);
   };
 
   const renderPagination = () => {
-    console.log('Rendering Pagination, Total Pages:', totalPages);
-    
     const pageNumbers = [];
     const maxVisiblePages = 3;
     
@@ -106,22 +119,54 @@ const Home = () => {
       <section>
         <div className={styles.navWrapper}>
           <h2 className={styles.title}>
-            {selectedCategory ? `${selectedCategory} 모일 모아보기` : '모든 스터디 모아보기'}
+            {searchQuery 
+              ? `'${searchQuery}' 검색결과`
+              : selectedCategory 
+                ? `${selectedCategory} 모일 모아보기` 
+                : '모든 스터디 모아보기'
+            }
           </h2>
           <ul>
-            <li>최신순</li>
-            <li>인기순</li>
-            <li>마감안된순</li>
+            <li 
+              onClick={() => setSortType('latest')}
+              className={sortType === 'latest' ? styles.active : ''}
+            >
+              최신순
+            </li>
+            <li 
+              onClick={() => setSortType('popular')}
+              className={sortType === 'popular' ? styles.active : ''}
+            >
+              인기순
+            </li>
+            <li 
+              onClick={() => setSortType('open')}
+              className={sortType === 'open' ? styles.active : ''}
+            >
+              마감안된순
+            </li>
           </ul>
         </div>
         <ul className={styles.listWrapper}>
           {currentItems.map((study, index) => (
-            <li className={styles.list} key={`${study.id}-${index}`}>
+            <li 
+              className={`${styles.list} ${study.isClosed ? styles.closed : ''}`} 
+              key={`${study.id}-${index}`}
+              onClick={() => {
+                if (study.isClosed) {
+                  alert('이 스터디는 마감되었습니다.');
+                  return;
+                }
+                navigate(`/post/${study.id}`);
+              }}
+            >
               <Post 
+                id={study.id}
                 title={study.title}
                 description={study.description}
                 tag={study.category}
                 isPopular={study.isPopular}
+                isClosed={study.isClosed}
               />
             </li>
           ))}

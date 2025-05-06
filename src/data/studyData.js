@@ -123,7 +123,7 @@ export const studyData = [
   },
   {
     id: 12,
-    title: "직장인 저녁2시간 자기계발",
+    title: "직장인 저녁2시간 자기계발222",
     description: "저녁 2시간 동안 캠이나 디스코드 켜놓고 각자 할일 하는 방입니다.",
     maxMembers: 5,
     currentMembers: 3,
@@ -132,6 +132,7 @@ export const studyData = [
     location: "온라인",
     category: "자기계발",
     isPopular: true,
+    isClosed: true,
   },
   {
     id: 13,
