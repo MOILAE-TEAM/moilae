@@ -22,9 +22,10 @@ function Header() {
     };
 
     const handleTitleClick = () => {
-        setSelectedCategory(null); // 카테고리 초기화
-        resetSearch(); // 검색어와 검색 결과 초기화
-        navigate('/'); // 메인 페이지로 이동
+        window.location.href = '/?utm_source=reload';
+        // setSelectedCategory(null); // 카테고리 초기화
+        // resetSearch(); // 검색어와 검색 결과 초기화
+        // navigate('/'); // 메인 페이지로 이동
     };
 
     return (
