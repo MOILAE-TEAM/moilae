@@ -18,18 +18,21 @@ const Home = () => {
   // 선택된 카테고리가 있으면 해당 카테고리의 데이터만 필터링하고 정렬
   const filteredData = useMemo(() => {
     let filtered = selectedCategory
-      ? searchResults.filter(item => item.category === selectedCategory)
+      ? searchResults.filter(item =>
+          item.category
+            .split(',')
+            .map(cat => cat.trim())
+            .includes(selectedCategory)
+        )
       : searchResults;
-
+  
     // 정렬 로직
     switch (sortType) {
       case 'popular':
         filtered = [...filtered].sort((a, b) => {
-          // 먼저 마감 상태로 정렬 (마감된 게시물이 뒤로)
           if (a.isClosed !== b.isClosed) {
             return a.isClosed ? 1 : -1;
           }
-          // 그 다음 인기 여부로 정렬
           return (b.isPopular ? 1 : 0) - (a.isPopular ? 1 : 0);
         });
         break;
@@ -41,9 +44,10 @@ const Home = () => {
         filtered = [...filtered].sort((a, b) => new Date(b.startDate) - new Date(a.startDate));
         break;
     }
-
+  
     return filtered;
   }, [selectedCategory, sortType, searchResults]);
+  
 
   // useMemo를 사용하여 페이지네이션 계산을 최적화
   const { currentItems, totalPages } = useMemo(() => {

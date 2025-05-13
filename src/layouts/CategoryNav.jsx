@@ -9,7 +9,17 @@ const CategoryNav = () => {
   const { setSelectedCategory } = useCategory();
   const { resetSearch } = useSearchStore();
   
-  const categories = [...new Set(studyData.map(item => item.category))];
+  //카테고리 동적 생성
+  const categories = [
+    ...new Set(
+      studyData
+        .flatMap(item =>
+          item.category
+            .split(',')
+            .map(cat => cat.trim())
+        )
+    )
+  ];
 
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
