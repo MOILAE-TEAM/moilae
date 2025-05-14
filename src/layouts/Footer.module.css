@@ -64,3 +64,19 @@
     color: #C0C0C0;
     margin: 5px 0;
 }
+
+@media screen and (max-width: 480px) {
+    .teamSection h2,
+    .supportSection h2 ,
+    .teamSection ul li a ,
+    .contactSection p {
+    font-size: 12px;
+    font-weight: 500;
+
+}
+  .footer {
+    flex-direction: column;
+    padding: 20px 40px;
+  }
+}
+  

@@ -59,3 +59,16 @@
   background-color: #f8f9fa;
   color: #228be6;
 } 
+
+@media screen and (max-width: 480px) {
+  .navButtons {
+    margin-left: 0;
+    justify-content: space-evenly;
+  }
+  .nav{
+    padding: 12px;
+    margin-bottom: 12px;
+  }
+}
+
+

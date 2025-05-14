@@ -22,7 +22,7 @@ function Header() {
     };
 
     const handleTitleClick = () => {
-        window.location.href = '/?utm_source=reload';
+        window.location.href = '/'; //새로 시작되는 느낌을 주기 위해서 + 공유용 링크로 빠질 수 있기 때문에 
         // setSelectedCategory(null); // 카테고리 초기화
         // resetSearch(); // 검색어와 검색 결과 초기화
         // navigate('/'); // 메인 페이지로 이동

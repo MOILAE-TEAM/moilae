@@ -44,3 +44,12 @@ button:hover {
     height: auto;
     object-fit: contain;
 }
+
+@media screen and (max-width: 480px) {
+    article{
+        gap: 10px;
+        padding: 12px
+    }
+    
+}
+
