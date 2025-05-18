@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { studyData } from '../data/studyData';
 import { useCategory } from '../context/CategoryContext';
 import useSearchStore from '../store/useSearchStore';
@@ -8,6 +9,7 @@ const CategoryNav = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { setSelectedCategory } = useCategory();
   const { resetSearch } = useSearchStore();
+  const navigate = useNavigate();
   
   //카테고리 동적 생성
   const categories = [
@@ -24,11 +26,13 @@ const CategoryNav = () => {
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
     setIsOpen(false);
+    navigate('/');
   };
 
   const handleAllClick = () => {
     setSelectedCategory(null);
     resetSearch();
+    navigate('/');
   };
 
   return (
