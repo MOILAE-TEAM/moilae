@@ -41,18 +41,25 @@ const PostDetailPage = () => {
         </div>
         
         <div className={styles.content}>
-          <p className={styles.description}>{post.description}</p>
-          
+          <div 
+            className={styles.description}
+            dangerouslySetInnerHTML={{ 
+              __html: post.description.replace(
+                /(https?:\/\/[^\s]+)/g, 
+                '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>'
+              )
+            }} 
+          />
           
           <div className={styles.details}>
             <div className={styles.detailItem}>
               <h3>모집 인원</h3>
               <p>{post.currentMembers} / {post.maxMembers}명</p>
             </div>
-            <div className={styles.detailItem}>
+            {/* <div className={styles.detailItem}>
               <h3>사용 플랫폼</h3>
               <p>{post.platform || ''}</p>
-            </div>
+            </div> */}
             <div className={styles.detailItem}>
               <h3>시작일</h3>
               <p>{post.startDate}</p>
