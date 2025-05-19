@@ -6,7 +6,7 @@ const Post = ({ id, title, semiTitle, description, tag, isPopular, isClosed }) =
   return (
     <div className={styles.card}>
       <div className={styles.titleWrapper}>
-        <h3>{title}</h3>
+        <h3 className={styles.title}>{title}</h3>
         {isPopular && (
           <>
             <img className={styles.fireIcon} src={fireIcon} alt="인기 아이콘" width={44} height={44} />

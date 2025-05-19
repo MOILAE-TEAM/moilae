@@ -54,7 +54,7 @@ const PostDetailPage = () => {
           <div className={styles.details}>
             <div className={styles.detailItem}>
               <h3>모집 인원</h3>
-              <p>{post.currentMembers} / {post.maxMembers}명</p>
+              <p>{post.maxMembers}명</p>
             </div>
             {/* <div className={styles.detailItem}>
               <h3>사용 플랫폼</h3>
