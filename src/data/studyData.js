@@ -484,5 +484,24 @@ export const studyData = [
     isPopular: false,
     isClosed: false
   }
+  ,
+  {
+    id: 28,
+    title: "소방공무원 스터디 ",
+    semiTitle: "소방공무원을 꿈 꾸는 사람들의 스터디",
+    description: `
+ 스터디 하루 진도와 서로 모르는 문제 공유하기
+
+ 오픈채팅 링크 : https://open.kakao.com/o/gahuAUxh
+  `,
+    maxMembers: 5,
+    currentMembers: 5,
+    startDate: "2025-05-26",
+    endDate: "2025-07 -30",
+    location: "슬랙",
+    category: "공부",
+    isPopular: true,
+    isClosed: false
+  }
   
 ];
