@@ -498,7 +498,7 @@ export const studyData = [
     currentMembers: 5,
     startDate: "2025-05-26",
     endDate: "2025-07 -30",
-    location: "슬랙",
+    location: "카카오톡",
     category: "공부",
     isPopular: true,
     isClosed: false
